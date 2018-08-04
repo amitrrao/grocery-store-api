@@ -63,7 +63,7 @@ public class TestData {
 		item5.setDescription("Bic Ball Point Pens");
 		item5.setCategory("stationary");
 		item5.setSaleItem(new SaleItem(0.5f, 0.0f, item5));
-		item5.setInternalDetails(new InternalDetails(15, 15, 20, item5));
+		item5.setInternalDetails(new InternalDetails(17, 15, 20, item5));
 		items.add(item5);
 		
 		return items;

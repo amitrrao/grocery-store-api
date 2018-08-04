@@ -9,15 +9,18 @@ import org.springframework.stereotype.Service;
 import com.exercise.webapp.base.CheckoutItem;
 import com.exercise.webapp.data.TestData;
 import com.exercise.webapp.persistence.models.GroceryItem;
-import com.exercise.webapp.persistence.models.InternalDetails;
 import com.exercise.webapp.persistence.models.SaleItem;
 import com.exercise.webapp.repository.GroceryItemRepository;
+import com.exercise.webapp.repository.SaleItemRepository;
 
 @Service
 public class GroceryItemService {
 
 	@Autowired
 	private GroceryItemRepository groceryItemRepository;
+	
+	@Autowired
+	private SaleItemRepository saleItemRepository;
 	
 	public List<GroceryItem> getAllGroceryItems() {
 		System.out.println("**********Getting all grocery items**********");
@@ -32,6 +35,7 @@ public class GroceryItemService {
 		}
 		return groceryItems;
 	}
+	// TODO: add comments
 	
 	//TODO: Float v/s float
 	public float checkout(List<CheckoutItem> checkoutItems) {
@@ -44,12 +48,31 @@ public class GroceryItemService {
 		return total;
 	}
 	
+	public List<SaleItem> findSuperSaverItems() {
+		List<SaleItem> superSaverSaleItems = saleItemRepository.findByPrice();
+		return superSaverSaleItems;
+	}
 	private float calculateItemPrice(float price, float discount) {
 		// TODO: is it better to use Float and use sum/subtract instead of price - discount?
 		return (discount > price) ? 0 : price - discount;
 	}
 	public void addGroceryItem(GroceryItem item) {
 		List<GroceryItem> listOfItems = TestData.getGroceryItemTestData();
-		groceryItemRepository.save(listOfItems);
+		saveGroceryItems(listOfItems);
+	}
+	
+	public void saveGroceryItems(List<GroceryItem> items) {
+		groceryItemRepository.save(items);
+	}
+
+	public void moveItemsToSuperSavingsAisle() {
+		List<GroceryItem> groceryItems = new ArrayList<>();
+		List<SaleItem> superSaverItems = findSuperSaverItems();
+		for (SaleItem superSaverItem : superSaverItems) {
+			GroceryItem gi = superSaverItem.getGroceryItem();
+			gi.getInternalDetails().setAisle(15); // TODO: move 15 to static value
+			groceryItems.add(gi);
+		}
+		saveGroceryItems(groceryItems);
 	}
 }

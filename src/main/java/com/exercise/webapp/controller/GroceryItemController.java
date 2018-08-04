@@ -42,6 +42,11 @@ public class GroceryItemController {
 		return itemService.checkout(checkoutItems);
 	}
 	
+	@RequestMapping(method=RequestMethod.PUT, value="/groceryitems/moveItemsToSuperSavingsAisle")
+	public void moveItemsToSuperSavingsAisle() {
+		itemService.moveItemsToSuperSavingsAisle();
+	}
+	
 	@RequestMapping(method=RequestMethod.GET, value="/hello")
 	public String sayHi() {
 		return "Hi There, Welcome to the Apple Grocery Store!!";
