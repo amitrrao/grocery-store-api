@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.exercise.webapp.base.CheckoutItem;
 import com.exercise.webapp.builder.GroceryItemBuilder;
 import com.exercise.webapp.persistence.models.GroceryItem;
 import com.exercise.webapp.service.GroceryItemService;
@@ -32,6 +33,13 @@ public class GroceryItemController {
 	public void addItem(@RequestBody GroceryItem item) {
 		System.out.println("******grocery item controller posting*****");
 		itemService.addGroceryItem(item);
+	}
+	
+	// TODO: should it be a get or a post?
+	@RequestMapping(method=RequestMethod.POST, value="/groceryitems/checkout")
+	public Float checkout(@RequestBody List<CheckoutItem> checkoutItems) {
+		System.out.println("*******checking out items*******");
+		return itemService.checkout(checkoutItems);
 	}
 	
 	@RequestMapping(method=RequestMethod.GET, value="/hello")

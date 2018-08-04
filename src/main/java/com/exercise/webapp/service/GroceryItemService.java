@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.exercise.webapp.base.CheckoutItem;
 import com.exercise.webapp.data.TestData;
 import com.exercise.webapp.persistence.models.GroceryItem;
 import com.exercise.webapp.persistence.models.InternalDetails;
@@ -32,18 +33,23 @@ public class GroceryItemService {
 		return groceryItems;
 	}
 	
+	//TODO: Float v/s float
+	public float checkout(List<CheckoutItem> checkoutItems) {
+		float total = 0;
+		for(CheckoutItem checkoutItem : checkoutItems) {
+			GroceryItem groceryItem = groceryItemRepository.findOne(checkoutItem.getId());
+			total += calculateItemPrice(groceryItem.getSaleItem().getPrice(), 
+					groceryItem.getSaleItem().getDiscount()) * checkoutItem.getQuantity();
+		}
+		return total;
+	}
+	
+	private float calculateItemPrice(float price, float discount) {
+		// TODO: is it better to use Float and use sum/subtract instead of price - discount?
+		return (discount > price) ? 0 : price - discount;
+	}
 	public void addGroceryItem(GroceryItem item) {
 		List<GroceryItem> listOfItems = TestData.getGroceryItemTestData();
 		groceryItemRepository.save(listOfItems);
-//		listOfItems.stream()
-//		.forEach(i -> groceryItemRepository.save(i));
-//		GroceryItem item1 = new GroceryItem();
-//		item1.setId(12345);
-//		item1.setName("Fuji Apples");
-//		item1.setDescription("Fuji Apples from California");
-//		item1.setCategory("fruit");
-//		item1.setSaleItem(new SaleItem(10.0f, 2.0f, item1));
-//		item1.setInternalDetails(new InternalDetails(10, 20, 30, item1));
-//		groceryItemRepository.save(item1);
 	}
 }
