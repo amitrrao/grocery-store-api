@@ -1,23 +1,29 @@
 package com.exercise.webapp.persistence.models;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="INTERNAL_DETAILS")
 public class InternalDetails {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int internalId;
 	
 	private int aisle;
 	private int timesSoldToday;
 	private int timesSoldYesterday;
 	
-//	@JoinColumn(name="id")
-//	private GroceryItem item;
+	@OneToOne(cascade= CascadeType.ALL)
+	@JoinColumn(name = "GROCERY_ITEM_ID")
+	private GroceryItem groceryItem;
 
 	public int getInternalId() {
 		return internalId;
@@ -51,19 +57,22 @@ public class InternalDetails {
 		this.timesSoldYesterday = timesSoldYesterday;
 	}
 
-//	public GroceryItem getItem() {
-//		return item;
-//	}
-//
-//	public void setItem(GroceryItem item) {
-//		this.item = item;
-//	}
+	public GroceryItem getItem() {
+		return groceryItem;
+	}
 
+	public void setItem(GroceryItem item) {
+		this.groceryItem = item;
+	}
+
+	public InternalDetails() {
+		
+	}
 	public InternalDetails(int aisle, int timesSoldToday, int timesSoldYesterday, GroceryItem item) {
 		super();
 		this.aisle = aisle;
 		this.timesSoldToday = timesSoldToday;
 		this.timesSoldYesterday = timesSoldYesterday;
-		//this.item = item;
+		this.groceryItem = item;
 	}
 }

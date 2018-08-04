@@ -6,7 +6,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.exercise.webapp.data.TestData;
 import com.exercise.webapp.persistence.models.GroceryItem;
+import com.exercise.webapp.persistence.models.InternalDetails;
 import com.exercise.webapp.persistence.models.SaleItem;
 import com.exercise.webapp.repository.GroceryItemRepository;
 
@@ -31,12 +33,17 @@ public class GroceryItemService {
 	}
 	
 	public void addGroceryItem(GroceryItem item) {
-		GroceryItem item1 = new GroceryItem();
-		item1.setId(12345);
-		item1.setName("Fuji Apples");
-		item1.setDescription("Fuji Apples from California");
-		item1.setCategory("fruit");
-		item1.setSaleItem(new SaleItem(10.0f, 2.0f, item1));
-		groceryItemRepository.save(item1);
+		List<GroceryItem> listOfItems = TestData.getGroceryItemTestData();
+		groceryItemRepository.save(listOfItems);
+//		listOfItems.stream()
+//		.forEach(i -> groceryItemRepository.save(i));
+//		GroceryItem item1 = new GroceryItem();
+//		item1.setId(12345);
+//		item1.setName("Fuji Apples");
+//		item1.setDescription("Fuji Apples from California");
+//		item1.setCategory("fruit");
+//		item1.setSaleItem(new SaleItem(10.0f, 2.0f, item1));
+//		item1.setInternalDetails(new InternalDetails(10, 20, 30, item1));
+//		groceryItemRepository.save(item1);
 	}
 }

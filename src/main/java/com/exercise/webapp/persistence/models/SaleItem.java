@@ -3,6 +3,7 @@ package com.exercise.webapp.persistence.models;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -13,7 +14,7 @@ import javax.persistence.Table;
 public class SaleItem {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int saleItemId;
 	private Float price;
 	private Float discount;
@@ -38,8 +39,6 @@ public class SaleItem {
 		this.price = price;
 	}
 
-//	@OneToOne(cascade = CascadeType.ALL)
-//	@JoinColumn(name="id")
 	public GroceryItem getGroceryItem() {
 		return groceryItem;
 	}
@@ -56,7 +55,9 @@ public class SaleItem {
 		this.discount = discount;
 	}
 
-	public SaleItem() {}
+	public SaleItem() {
+		
+	}
 	public SaleItem(Float price, Float discount, GroceryItem item) {
 		super();
 		this.price = price;
