@@ -27,9 +27,9 @@ public class GroceryItemController implements ErrorController {
 	@Autowired
 	private GroceryItemService itemService;
 	
-	@RequestMapping("/groceryitems")
+	@RequestMapping(method=RequestMethod.GET, value="/groceryitems")
 	public List<com.exercise.webapp.base.GroceryItem> getAllItems() {
-		return deserializeGroceryItem(itemService.getAllGroceryItems());
+		return serializeGroceryItem(itemService.getAllGroceryItems());
 	}
 	
 	@RequestMapping(method=RequestMethod.POST, value="/groceryitems")
@@ -72,7 +72,7 @@ public class GroceryItemController implements ErrorController {
 		return INVALID_PATH;
 	}
 	
-	private List<com.exercise.webapp.base.GroceryItem> deserializeGroceryItem(List<GroceryItem> items) {
+	private List<com.exercise.webapp.base.GroceryItem> serializeGroceryItem(List<GroceryItem> items) {
 		List<com.exercise.webapp.base.GroceryItem> returnItems = new ArrayList<>();
 		for(GroceryItem item: items) {
 		com.exercise.webapp.base.GroceryItem returnItem =

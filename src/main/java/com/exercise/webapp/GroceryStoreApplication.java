@@ -32,18 +32,16 @@ public class GroceryStoreApplication extends SpringBootServletInitializer implem
 		SpringApplication.run(GroceryStoreApplication.class, args);
 	}
 	
-	//TODO: take command line arg for file location
 	@Override
     public void run(String... args) throws Exception {
 		JSONParser parser = new JSONParser();
-		JSONArray jsonArray = (JSONArray) parser.parse(new FileReader("/Users/agoel/Documents/workspace-sts/grocery-store/src/main/java/com/exercise/webapp/data/input.json"));
+		JSONArray jsonArray = (JSONArray) parser.parse(new FileReader(args[0]));
 		for (Object o : jsonArray) {
-			itemRepository.save(serializeGroceryItem(o));
+			itemRepository.save(deserializeGroceryItem(o));
         }
     }
-	
-	// TODO: deserialize right?
-	private GroceryItem serializeGroceryItem(Object obj) {
+
+	private GroceryItem deserializeGroceryItem(Object obj) {
 		GroceryItem returnItem = new GroceryItem();
 		JSONObject item = (JSONObject) obj;
 		returnItem.setId((long) item.get("id"));
