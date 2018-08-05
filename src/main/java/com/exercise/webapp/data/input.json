@@ -1,0 +1,458 @@
+[
+    {
+        "name": "Idaho Potatoes",
+        "id": 101,
+        "itemInfo": {
+            "description": "Fuji Apples from California",
+            "category": "vegetable"
+        },
+        "sales": {
+            "price": 3.0,
+            "discount": 0.5
+        },
+        "internal": {
+            "aisle": 1,
+            "timesSold": {
+                "today": 900,
+                "yesterday": 10
+            }
+        }
+    },
+    {
+        "name": "Mars Chocolate",
+        "id": 102,
+        "itemInfo": {
+            "description": "Mars Milk Chocolates",
+            "category": "candy"
+        },
+        "sales": {
+            "price": 3.0,
+            "discount": 0.5
+        },
+        "internal": {
+            "aisle": 20,
+            "timesSold": {
+                "today": 200,
+                "yesterday": 30
+            }
+        }
+    },
+    {
+        "name": "Roma Tomatoes",
+        "id": 103,
+        "itemInfo": {
+            "description": "Roma Tomatoes from Mexico",
+            "category": "produce"
+        },
+        "sales": {
+            "price": 1.5,
+            "discount": 0.0
+        },
+        "internal": {
+            "aisle": 11,
+            "timesSold": {
+                "today": 150,
+                "yesterday": 100
+            }
+        }
+    },
+    {
+        "name": "Almond Cookies",
+        "id": 104,
+        "itemInfo": {
+            "description": "Fresh Baked Almond Cookies",
+            "category": "bakery"
+        },
+        "sales": {
+            "price": 3.0,
+            "discount": 1.0
+        },
+        "internal": {
+            "aisle": 12,
+            "timesSold": {
+                "today": 50,
+                "yesterday": 60
+            }
+        }
+    },
+    {
+        "name": "Bic Pens",
+        "id": 105,
+        "itemInfo": {
+            "description": "Bic Ball Point Pens",
+            "category": "stationary"
+        },
+        "sales": {
+            "price": 0.5,
+            "discount": 0.0
+        },
+        "internal": {
+            "aisle": 17,
+            "timesSold": {
+                "today": 15,
+                "yesterday": 20
+            }
+        }
+    },
+    {
+        "name": "Fuji Apples",
+        "id": 106,
+        "itemInfo": {
+            "description": "Fuji Apples from California",
+            "category": "fruit"
+        },
+        "sales": {
+            "price": 20.0,
+            "discount": 5.0
+        },
+        "internal": {
+            "aisle": 10,
+            "timesSold": {
+                "today": 900,
+                "yesterday": 10
+            }
+        }
+    },
+    {
+        "name": "Fruit 7",
+        "id": 107,
+        "itemInfo": {
+            "description": "Fruit 7",
+            "category": "fruit"
+        },
+        "sales": {
+            "price": 10.0,
+            "discount": 2.0
+        },
+        "internal": {
+            "aisle": 10,
+            "timesSold": {
+                "today": 20,
+                "yesterday": 30
+            }
+        }
+    },
+    {
+        "name": "Fruit 8",
+        "id": 108,
+        "itemInfo": {
+            "description": "Fruit 8",
+            "category": "fruit"
+        },
+        "sales": {
+            "price": 6.0,
+            "discount": 0.5
+        },
+        "internal": {
+            "aisle": 10,
+            "timesSold": {
+                "today": 20,
+                "yesterday": 30
+            }
+        }
+    },
+    {
+        "name": "Fruit 9",
+        "id": 109,
+        "itemInfo": {
+            "description": "Fruit 9",
+            "category": "fruit"
+        },
+        "sales": {
+            "price": 0.5,
+            "discount": 0.1
+        },
+        "internal": {
+            "aisle": 100,
+            "timesSold": {
+                "today": 200,
+                "yesterday": 30
+            }
+        }
+    },
+    {
+        "name": "Fruit 10",
+        "id": 110,
+        "itemInfo": {
+            "description": "Fruit 10",
+            "category": "fruit"
+        },
+        "sales": {
+            "price": 10.0,
+            "discount": 2.0
+        },
+        "internal": {
+            "aisle": 10,
+            "timesSold": {
+                "today": 20,
+                "yesterday": 0
+            }
+        }
+    },
+    {
+        "name": "Fruit 11",
+        "id": 111,
+        "itemInfo": {
+            "description": "Fruit 11",
+            "category": "fruit"
+        },
+        "sales": {
+            "price": 10.0,
+            "discount": 2.0
+        },
+        "internal": {
+            "aisle": 10,
+            "timesSold": {
+                "today": 0,
+                "yesterday": 2000
+            }
+        }
+    },
+    {
+        "name": "Fruit 12",
+        "id": 112,
+        "itemInfo": {
+            "description": "Fruit 12",
+            "category": "fruit"
+        },
+        "sales": {
+            "price": 14.0,
+            "discount": 2.0
+        },
+        "internal": {
+            "aisle": 10,
+            "timesSold": {
+                "today": 0,
+                "yesterday": 0
+            }
+        }
+    },
+    {
+        "name": "Other 13",
+        "id": 113,
+        "itemInfo": {
+            "description": "Other 13",
+            "category": "other"
+        },
+        "sales": {
+            "price": 11.0,
+            "discount": 2.0
+        },
+        "internal": {
+            "aisle": 10,
+            "timesSold": {
+                "today": 10,
+                "yesterday": 20
+            }
+        }
+    },
+    {
+        "name": "Other 14",
+        "id": 114,
+        "itemInfo": {
+            "description": "Other 14",
+            "category": "other"
+        },
+        "sales": {
+            "price": 0.75,
+            "discount": 2.0
+        },
+        "internal": {
+            "aisle": 10,
+            "timesSold": {
+                "today": 10,
+                "yesterday": 0
+            }
+        }
+    },
+    {
+        "name": "Other 15",
+        "id": 115,
+        "itemInfo": {
+            "description": "Other 15",
+            "category": "other"
+        },
+        "sales": {
+            "price": 15.0,
+            "discount": 2.0
+        },
+        "internal": {
+            "aisle": 10,
+            "timesSold": {
+                "today": 0,
+                "yesterday": 20
+            }
+        }
+    },
+    {
+        "name": "Other 16",
+        "id": 116,
+        "itemInfo": {
+            "description": "Other 16",
+            "category": "other"
+        },
+        "sales": {
+            "price": 12.0,
+            "discount": 2.0
+        },
+        "internal": {
+            "aisle": 10,
+            "timesSold": {
+                "today": 0,
+                "yesterday": 0
+            }
+        }
+    },
+    {
+        "name": "Fruit 17",
+        "id": 117,
+        "itemInfo": {
+            "description": "Fruit 17",
+            "category": "fruit"
+        },
+        "sales": {
+            "price": 10.0,
+            "discount": 0.0
+        },
+        "internal": {
+            "aisle": 10,
+            "timesSold": {
+                "today": 20,
+                "yesterday": 30
+            }
+        }
+    },
+    {
+        "name": "Fruit 18",
+        "id": 118,
+        "itemInfo": {
+            "description": "Fruit 18",
+            "category": "fruit"
+        },
+        "sales": {
+            "price": 15.0,
+            "discount": 0.0
+        },
+        "internal": {
+            "aisle": 10,
+            "timesSold": {
+                "today": 20,
+                "yesterday": 0
+            }
+        }
+    },
+    {
+        "name": "Fruit 19",
+        "id": 119,
+        "itemInfo": {
+            "description": "Fruit 19",
+            "category": "fruit"
+        },
+        "sales": {
+            "price": 1.25,
+            "discount": 0.0
+        },
+        "internal": {
+            "aisle": 10,
+            "timesSold": {
+                "today": 0,
+                "yesterday": 20
+            }
+        }
+    },
+    {
+        "name": "Fruit 20",
+        "id": 120,
+        "itemInfo": {
+            "description": "Fruit 20",
+            "category": "fruit"
+        },
+        "sales": {
+            "price": 13.0,
+            "discount": 2.0
+        },
+        "internal": {
+            "aisle": 10,
+            "timesSold": {
+                "today": 0,
+                "yesterday": 0
+            }
+        }
+    },
+    {
+        "name": "Other 21",
+        "id": 121,
+        "itemInfo": {
+            "description": "Other 21",
+            "category": "other"
+        },
+        "sales": {
+            "price": 1.5,
+            "discount": 0.0
+        },
+        "internal": {
+            "aisle": 10,
+            "timesSold": {
+                "today": 10,
+                "yesterday": 20
+            }
+        }
+    },
+    {
+        "name": "Other 22",
+        "id": 122,
+        "itemInfo": {
+            "description": "Other 22",
+            "category": "other"
+        },
+        "sales": {
+            "price": 2.0,
+            "discount": 0.0
+        },
+        "internal": {
+            "aisle": 10,
+            "timesSold": {
+                "today": 10,
+                "yesterday": 0
+            }
+        }
+    },
+    {
+        "name": "Other 23",
+        "id": 123,
+        "itemInfo": {
+            "description": "Other 23",
+            "category": "other"
+        },
+        "sales": {
+            "price": 9.0,
+            "discount": 0.0
+        },
+        "internal": {
+            "aisle": 10,
+            "timesSold": {
+                "today": 0,
+                "yesterday": 20
+            }
+        }
+    },
+    {
+        "name": "Other 24",
+        "id": 124,
+        "itemInfo": {
+            "description": "Other 24",
+            "category": "other"
+        },
+        "sales": {
+            "price": 8.5,
+            "discount": 0.0
+        },
+        "internal": {
+            "aisle": 10,
+            "timesSold": {
+                "today": 0,
+                "yesterday": 0
+            }
+        }
+    }
+]

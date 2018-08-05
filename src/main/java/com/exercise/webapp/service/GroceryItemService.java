@@ -73,17 +73,26 @@ public class GroceryItemService {
 		groceryItemRepository.save(items);
 	}
 
-	public void moveItemsToSuperSavingsAisle() {
+	public String moveItemsToSuperSavingsAisle() {
 		List<GroceryItem> groceryItems = new ArrayList<>();
-		List<SaleItem> superSaverItems = findSuperSaverItems();
-		for (SaleItem superSaverItem : superSaverItems) {
-			GroceryItem gi = superSaverItem.getGroceryItem();
-			logger.info(String.format("Found %s on Aisle %d.", gi.getName(), gi.getInternalDetails().getAisle()));
-			gi.getInternalDetails().setAisle(15); // TODO: move 15 to static value
-			groceryItems.add(gi);
-			logger.info(String.format("Moved %s to Aisle 15.", gi.getName()));
+		boolean success = true;
+		try {
+			List<SaleItem> superSaverItems = findSuperSaverItems();
+			for (SaleItem superSaverItem : superSaverItems) {
+				GroceryItem gi = superSaverItem.getGroceryItem();
+				logger.info(String.format("Found %s on Aisle %d.", gi.getName(), gi.getInternalDetails().getAisle()));
+				gi.getInternalDetails().setAisle(15); // TODO: move 15 to static value
+				groceryItems.add(gi);
+				logger.info(String.format("Moved %s to Aisle 15.", gi.getName()));
+			}
+			logger.info(String.format("Total number of grocery items moved: %d", superSaverItems.size()));
+			saveGroceryItems(groceryItems);
+		} catch (Exception e) {
+			success = false;
+			logger.error(e.getMessage());
 		}
-		logger.info(String.format("Total number of grocery items moved: %d", superSaverItems.size()));
-		saveGroceryItems(groceryItems);
+		if (success)
+			return "Successfully moved all eligible items to the SuperSavings aisle.";
+		return "Something went wrong while moving items to the SuperSavings aisle.";
 	}
 }
