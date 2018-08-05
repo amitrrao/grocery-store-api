@@ -3,6 +3,8 @@ package com.exercise.webapp.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,8 @@ import com.exercise.webapp.repository.SaleItemRepository;
 @Service
 public class GroceryItemService {
 
+	private static final Logger logger = LoggerFactory.getLogger(GroceryItemService.class);
+	
 	@Autowired
 	private GroceryItemRepository groceryItemRepository;
 	
@@ -23,28 +27,32 @@ public class GroceryItemService {
 	private SaleItemRepository saleItemRepository;
 	
 	public List<GroceryItem> getAllGroceryItems() {
-		System.out.println("**********Getting all grocery items**********");
-		
+		logger.info(String.format("**********Getting all items from the grocery store**********"));
 		List<GroceryItem> groceryItems = new ArrayList<>();
 		groceryItemRepository.findAll()
 		.forEach(groceryItems::add);
-		
-		System.out.println("Grocery items found: ");
-		for(GroceryItem gc: groceryItems) {
-			System.out.println(gc.getDescription());
-		}
+
 		return groceryItems;
 	}
+	
+//	public List<GroceryItem> getTopFruitsSalesData() {
+//		System.out.println("*********getting fruits sales data********");
+//		
+//		List<GroceryItem> groceryItems = groceryItemRepository.findSalesDataForFruits();
+//		return groceryItems;
+//	}
 	// TODO: add comments
 	
 	//TODO: Float v/s float
 	public float checkout(List<CheckoutItem> checkoutItems) {
+		logger.info(String.format("Calculating the total checkout price."));
 		float total = 0;
 		for(CheckoutItem checkoutItem : checkoutItems) {
 			GroceryItem groceryItem = groceryItemRepository.findOne(checkoutItem.getId());
 			total += calculateItemPrice(groceryItem.getSaleItem().getPrice(), 
 					groceryItem.getSaleItem().getDiscount()) * checkoutItem.getQuantity();
 		}
+		logger.info(String.format("Total checkout price for this order is: %f", total));
 		return total;
 	}
 	
@@ -70,9 +78,12 @@ public class GroceryItemService {
 		List<SaleItem> superSaverItems = findSuperSaverItems();
 		for (SaleItem superSaverItem : superSaverItems) {
 			GroceryItem gi = superSaverItem.getGroceryItem();
+			logger.info(String.format("Found %s on Aisle %d.", gi.getName(), gi.getInternalDetails().getAisle()));
 			gi.getInternalDetails().setAisle(15); // TODO: move 15 to static value
 			groceryItems.add(gi);
+			logger.info(String.format("Moved %s to Aisle 15.", gi.getName()));
 		}
+		logger.info(String.format("Total number of grocery items moved: %d", superSaverItems.size()));
 		saveGroceryItems(groceryItems);
 	}
 }

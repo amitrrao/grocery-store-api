@@ -16,9 +16,18 @@ import com.exercise.webapp.persistence.models.SaleItem;
 public class TestData {
 	
 	public static List<GroceryItem> getGroceryItemTestData() {
-		//TODO: create enum for category
-		
 		List<GroceryItem> items = new ArrayList<>();
+		
+		//TODO: create enum for category
+		GroceryItem item1 = new GroceryItem();
+		item1.setId(101);
+		item1.setName("Idaho Potatoes");
+		item1.setDescription("Fuji Apples from California");
+		item1.setCategory("vegetable");
+		item1.setSaleItem(new SaleItem(3.0f, .5f, item1));
+		item1.setInternalDetails(new InternalDetails(1, 900, 10, item1));
+		items.add(item1);
+		
 		GroceryItem item2 = new GroceryItem();
 		item2.setId(102);
 		item2.setName("Mars Chocolate");
