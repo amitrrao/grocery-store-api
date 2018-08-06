@@ -1,8 +1,5 @@
 package com.exercise.webapp.builder;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.exercise.webapp.base.GroceryItem;
 import com.exercise.webapp.base.Internal;
 import com.exercise.webapp.base.ItemInfo;
@@ -10,8 +7,6 @@ import com.exercise.webapp.base.Sales;
 import com.exercise.webapp.base.TimesSold;
 
 public class GroceryItemBuilder implements Builder {
-
-	private static final Logger logger = LoggerFactory.getLogger(GroceryItemBuilder.class);
 	
 	private String name;
 	private long id;
@@ -63,6 +58,5 @@ public class GroceryItemBuilder implements Builder {
 						.withYesterday(timesSoldYesterday).build())
 				.build());
 	}
-
 }
 

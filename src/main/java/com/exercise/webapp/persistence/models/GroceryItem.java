@@ -19,8 +19,12 @@ public class GroceryItem {
 	private String description;
 	private String category;
 	
-	@OneToOne(fetch = FetchType.EAGER,mappedBy="groceryItem",cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.LAZY,mappedBy="groceryItem",
+			cascade = CascadeType.ALL, orphanRemoval = true)
 	private SaleItem saleItem;
+	@OneToOne(fetch = FetchType.LAZY,mappedBy="groceryItem", 
+			cascade = CascadeType.ALL, orphanRemoval = true)
+	private InternalDetails internalDetails;
 	
 	public long getId() {
 		return id;
@@ -47,11 +51,31 @@ public class GroceryItem {
 		this.category = category;
 	}
 	
-	//@OneToOne(mappedBy = "groceryItem")
 	public SaleItem getSaleItem() {
 		return saleItem;
 	}
 	public void setSaleItem(SaleItem saleItem) {
 		this.saleItem = saleItem;
+	}
+	public InternalDetails getInternalDetails() {
+		return internalDetails;
+	}
+	public void setInternalDetails(InternalDetails internalDetails) {
+		this.internalDetails = internalDetails;
+	}
+	
+	public GroceryItem() {
+		
+	}
+	
+	public GroceryItem(long id, String name, String description, String category, SaleItem saleItem,
+			InternalDetails internalDetails) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.description = description;
+		this.category = category;
+		this.saleItem = saleItem;
+		this.internalDetails = internalDetails;
 	}
 }

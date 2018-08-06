@@ -42,7 +42,4 @@ public class GroceryItem {
 	public Internal getInternal() {
 		return internal;
 	}
-	
-	// TODO: rename fields?? they are very non descriptive
-	
 }
