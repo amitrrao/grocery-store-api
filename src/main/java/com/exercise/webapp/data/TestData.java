@@ -34,7 +34,7 @@ public class TestData {
 		item2.setDescription("Mars Milk Chocolates");
 		item2.setCategory("candy");
 		item2.setSaleItem(new SaleItem(3.0f, .5f, item2));
-		item2.setInternalDetails(new InternalDetails(20, 200, 30, item2));
+		item2.setInternalDetails(new InternalDetails(20, 2000, 30, item2));
 		items.add(item2);
 		
 		GroceryItem item3 = new GroceryItem();

@@ -8,6 +8,7 @@ import javax.persistence.criteria.Predicate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.exercise.webapp.exceptions.ItemNotFoundException;
@@ -36,14 +37,14 @@ public class GroceryItemService {
 		.forEach(groceryItems::add);
 
 		return groceryItems;
+		
 	}
 	
 	public List<GroceryItem> getTopFruitsSalesData() {
 		System.out.println("*********getting fruits sales data********");
 		
-		List<GroceryItem> groceryItems = groceryItemRepository.findSalesDataForFruits();
+		List<GroceryItem> groceryItems = groceryItemRepository.findSalesDataForFruits(new PageRequest(0, 2)); // TODO: '2' can be a parameter
 		
-//		Predicate predicate = 
 		return groceryItems;
 	}
 	// TODO: add comments
