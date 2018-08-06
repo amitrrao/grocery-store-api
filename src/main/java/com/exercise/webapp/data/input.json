@@ -1,3 +1,4 @@
+\
 [
     {
         "name": "Idaho Potatoes",
@@ -255,7 +256,7 @@
         },
         "sales": {
             "price": 0.75,
-            "discount": 2.0
+            "discount": -2.0
         },
         "internal": {
             "aisle": 10,

@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.exercise.webapp.exceptions.ItemNotFoundException;
 import com.exercise.webapp.base.CheckoutItem;
 import com.exercise.webapp.data.TestData;
 import com.exercise.webapp.persistence.models.GroceryItem;
@@ -43,12 +44,15 @@ public class GroceryItemService {
 //	}
 	// TODO: add comments
 	
-	//TODO: Float v/s float
-	public float checkout(List<CheckoutItem> checkoutItems) {
+	public float checkout(List<CheckoutItem> checkoutItems) throws ItemNotFoundException {
 		logger.info(String.format("Calculating the total checkout price."));
 		float total = 0;
 		for(CheckoutItem checkoutItem : checkoutItems) {
 			GroceryItem groceryItem = groceryItemRepository.findOne(checkoutItem.getId());
+			if (groceryItem == null) {
+				logger.error(String.format("Item with id %s not found.", checkoutItem.getId()));
+				throw new ItemNotFoundException(String.format("Item with id %s not found.", checkoutItem.getId()));
+			}
 			total += calculateItemPrice(groceryItem.getSaleItem().getPrice(), 
 					groceryItem.getSaleItem().getDiscount()) * checkoutItem.getQuantity();
 		}
@@ -60,10 +64,12 @@ public class GroceryItemService {
 		List<SaleItem> superSaverSaleItems = saleItemRepository.findByPrice();
 		return superSaverSaleItems;
 	}
+	
 	private float calculateItemPrice(float price, float discount) {
 		// TODO: is it better to use Float and use sum/subtract instead of price - discount?
 		return (discount > price) ? 0 : price - discount;
 	}
+	
 	public void addGroceryItem(GroceryItem item) {
 		List<GroceryItem> listOfItems = TestData.getGroceryItemTestData();
 		saveGroceryItems(listOfItems);
@@ -78,6 +84,10 @@ public class GroceryItemService {
 		boolean success = true;
 		try {
 			List<SaleItem> superSaverItems = findSuperSaverItems();
+			if(superSaverItems.isEmpty()) {
+				logger.info(String.format("No eligible SuperSaver items were found."));
+				return "No eligible SuperSaver items were found.";
+			}
 			for (SaleItem superSaverItem : superSaverItems) {
 				GroceryItem gi = superSaverItem.getGroceryItem();
 				logger.info(String.format("Found %s on Aisle %d.", gi.getName(), gi.getInternalDetails().getAisle()));

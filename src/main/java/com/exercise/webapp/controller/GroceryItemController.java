@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.exercise.webapp.exceptions.ItemNotFoundException;
 import com.exercise.webapp.base.CheckoutItem;
 import com.exercise.webapp.builder.GroceryItemBuilder;
 import com.exercise.webapp.persistence.models.GroceryItem;
@@ -39,7 +40,7 @@ public class GroceryItemController implements ErrorController {
 	
 	// TODO: should it be a get or a post?
 	@RequestMapping(method=RequestMethod.POST, value="/groceryitems/checkout")
-	public Float checkout(@RequestBody List<CheckoutItem> checkoutItems) {
+	public Float checkout(@RequestBody List<CheckoutItem> checkoutItems) throws ItemNotFoundException {
 		return itemService.checkout(checkoutItems);
 	}
 	
