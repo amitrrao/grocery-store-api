@@ -21,9 +21,11 @@ public class GroceryItem {
 	private String description;
 	private String category;
 	
-	@OneToOne(fetch = FetchType.LAZY,mappedBy="groceryItem",cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToOne(fetch = FetchType.LAZY,mappedBy="groceryItem",
+			cascade = CascadeType.ALL, orphanRemoval = true)
 	private SaleItem saleItem;
-	@OneToOne(fetch = FetchType.LAZY,mappedBy="groceryItem",cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToOne(fetch = FetchType.LAZY,mappedBy="groceryItem", 
+			cascade = CascadeType.ALL, orphanRemoval = true)
 	private InternalDetails internalDetails;
 	
 	public long getId() {

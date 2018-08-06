@@ -76,8 +76,10 @@ public class GroceryItemService {
 	}
 	
 	public void addGroceryItem(GroceryItem item) {
-		List<GroceryItem> listOfItems = TestData.getGroceryItemTestData();
-		saveGroceryItems(listOfItems);
+		//List<GroceryItem> listOfItems = TestData.getGroceryItemTestData();
+		//saveGroceryItems(listOfItems);
+		System.out.println("*********adding a new grocery item********");
+		groceryItemRepository.save(item);
 	}
 	
 	public void saveGroceryItems(List<GroceryItem> items) {

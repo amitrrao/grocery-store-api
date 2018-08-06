@@ -13,6 +13,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
@@ -23,12 +24,16 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.exercise.webapp.controller.GroceryItemController;
+import com.exercise.webapp.data.TestData;
+import com.exercise.webapp.repository.GroceryItemRepository;
 import com.exercise.webapp.service.GroceryItemService;
+import static org.mockito.BDDMockito.*;
 
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(GroceryItemController.class)
 @ActiveProfiles("test")
+@ContextConfiguration(classes = {GroceryItemRepository.class})
 public class GroceryItemControllerTest {
 
 	private MockMvc mockMvc;
@@ -51,8 +56,8 @@ public class GroceryItemControllerTest {
 
 		@Test
 		public void getAllGroceryItems_Success() throws Exception {
-	//		given(mockGroceryItemService.getAllGroceryItems())
-	//		.willReturn(TestData.getGroceryItemTestData());
+//			given(mockGroceryItemService.getAllGroceryItems())
+//			.willReturn(TestData.getGroceryItemTestData());
 	
 			mockMvc.perform(get("/groceryitems"))
 			.andExpect(status().is(200));

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.exercise.webapp.exceptions.ItemNotFoundException;
+import com.exercise.webapp.GroceryStoreApplication;
 import com.exercise.webapp.base.CheckoutItem;
 import com.exercise.webapp.builder.GroceryItemBuilder;
 import com.exercise.webapp.persistence.models.GroceryItem;
@@ -26,38 +27,38 @@ public class GroceryItemController implements ErrorController {
 	private static final String INVALID_PATH = "/error";
 	
 	@Autowired
-	private GroceryItemService itemService;
+	private GroceryItemService groceryItemService;
 	
 	@RequestMapping(method=RequestMethod.GET, value="/groceryitems")
 	public List<com.exercise.webapp.base.GroceryItem> getAllItems() {
-		return serializeGroceryItem(itemService.getAllGroceryItems());
+		return GroceryStoreApplication.deserializeGroceryItem(groceryItemService.getAllGroceryItems());
 	}
 	
-	@RequestMapping(method=RequestMethod.POST, value="/groceryitems")
-	public void addItem(@RequestBody GroceryItem item) {
-		itemService.addGroceryItem(item);
+	@RequestMapping(method=RequestMethod.POST, value="/groceryitems/add")
+	public void addItem(@RequestBody com.exercise.webapp.base.GroceryItem item) {
+		System.out.println("*********amit********");
+		GroceryItem groceryItem = GroceryStoreApplication.serializeGroceryItem(item);
+		groceryItemService.addGroceryItem(groceryItem);
 	}
 	
 	@RequestMapping(method=RequestMethod.POST, value="/groceryitems/checkout")
 	public Float checkout(@RequestBody List<CheckoutItem> checkoutItems) throws ItemNotFoundException {
-		return itemService.checkout(checkoutItems);
+		return groceryItemService.checkout(checkoutItems);
 	}
 	
 	@RequestMapping(method=RequestMethod.PUT, value="/groceryitems/moveItemsToSuperSavingsAisle")
 	public String moveItemsToSuperSavingsAisle() {
-		return itemService.moveItemsToSuperSavingsAisle();
+		return groceryItemService.moveItemsToSuperSavingsAisle();
 	}
 	
-
 	@RequestMapping(method=RequestMethod.GET, value="/groceryitems/topFruitsSalesData")
 	public List<com.exercise.webapp.base.GroceryItem> getTopFruitsSalesData() {
-		itemService.addGroceryItem(null);
-		return (serializeGroceryItem(itemService.getTopFruitsSalesData()));
+		return (GroceryStoreApplication.deserializeGroceryItem(groceryItemService.getTopFruitsSalesData()));
 	}
 	
 	@RequestMapping(method=RequestMethod.GET, value="/hello")
 	public String sayHi() {
-		return "Hi There, Welcome to the Apple Grocery Store!!";
+		return "Hi There, Welcome to our Grocery Store!!";
 	}
 	
 	@RequestMapping(value = INVALID_PATH)
@@ -70,23 +71,5 @@ public class GroceryItemController implements ErrorController {
 	@Override
 	public String getErrorPath() {
 		return INVALID_PATH;
-	}
-	
-	private List<com.exercise.webapp.base.GroceryItem> serializeGroceryItem(List<GroceryItem> items) {
-		List<com.exercise.webapp.base.GroceryItem> returnItems = new ArrayList<>();
-		for(GroceryItem item: items) {
-		com.exercise.webapp.base.GroceryItem returnItem =
-				new GroceryItemBuilder(item.getName(), 
-						item.getId(), 
-						item.getDescription(), 
-						item.getCategory(), item.getSaleItem().getPrice(), 
-						item.getSaleItem().getDiscount(), 
-						item.getInternalDetails().getAisle(),
-						item.getInternalDetails().getTimesSoldToday(),
-						item.getInternalDetails().getTimesSoldYesterday()).build();
-		returnItems.add(returnItem);
-		}
-		logger.info(String.format("Total number of Grocery Items: %d", items.size()));
-		return returnItems;	
 	}
 }
