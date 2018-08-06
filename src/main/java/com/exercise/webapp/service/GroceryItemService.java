@@ -3,6 +3,8 @@ package com.exercise.webapp.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.criteria.Predicate;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,12 +38,14 @@ public class GroceryItemService {
 		return groceryItems;
 	}
 	
-//	public List<GroceryItem> getTopFruitsSalesData() {
-//		System.out.println("*********getting fruits sales data********");
-//		
-//		List<GroceryItem> groceryItems = groceryItemRepository.findSalesDataForFruits();
-//		return groceryItems;
-//	}
+	public List<GroceryItem> getTopFruitsSalesData() {
+		System.out.println("*********getting fruits sales data********");
+		
+		List<GroceryItem> groceryItems = groceryItemRepository.findTest();
+		
+//		Predicate predicate = 
+		return groceryItems;
+	}
 	// TODO: add comments
 	
 	public float checkout(List<CheckoutItem> checkoutItems) throws ItemNotFoundException {

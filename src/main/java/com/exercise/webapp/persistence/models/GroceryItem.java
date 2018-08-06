@@ -5,11 +5,17 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.NamedNativeQuery;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="GROCERY_ITEM")
+//@NamedQuery(name = "GroceryItem.findTest", query = "SELECT gi FROM GroceryItem gi where gi.saleItem.discount > 0")
+//@NamedQuery(name = "GroceryItem.findTest", query = "SELECT gi FROM GroceryItem gi where gi.internalDetails.timesSoldToday + gi.internalDetails.timesSoldYesterday > 0")
+//@NamedQuery(name = "GroceryItem.findTest", query = "SELECT gi FROM GroceryItem gi ORDER BY (gi.internalDetails.timesSoldToday + gi.internalDetails.timesSoldYesterday) DESC")
+@NamedQuery(name = "GroceryItem.findTest", query = "SELECT gi FROM GroceryItem gi WHERE gi.saleItem.discount > 0 AND gi.internalDetails.timesSoldToday + gi.internalDetails.timesSoldYesterday > 0 ORDER BY (gi.internalDetails.timesSoldToday + gi.internalDetails.timesSoldYesterday) DESC")
 public class GroceryItem {
 	
 	@Id
@@ -19,9 +25,9 @@ public class GroceryItem {
 	private String description;
 	private String category;
 	
-	@OneToOne(fetch = FetchType.EAGER,mappedBy="groceryItem",cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.LAZY,mappedBy="groceryItem",cascade = CascadeType.ALL, orphanRemoval = true)
 	private SaleItem saleItem;
-	@OneToOne(fetch = FetchType.EAGER,mappedBy="groceryItem",cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.LAZY,mappedBy="groceryItem",cascade = CascadeType.ALL, orphanRemoval = true)
 	private InternalDetails internalDetails;
 	
 	public long getId() {

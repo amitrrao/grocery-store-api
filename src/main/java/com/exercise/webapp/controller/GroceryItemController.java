@@ -38,7 +38,6 @@ public class GroceryItemController implements ErrorController {
 		itemService.addGroceryItem(item);
 	}
 	
-	// TODO: should it be a get or a post?
 	@RequestMapping(method=RequestMethod.POST, value="/groceryitems/checkout")
 	public Float checkout(@RequestBody List<CheckoutItem> checkoutItems) throws ItemNotFoundException {
 		return itemService.checkout(checkoutItems);
@@ -50,11 +49,11 @@ public class GroceryItemController implements ErrorController {
 	}
 	
 
-//	@RequestMapping(method=RequestMethod.GET, value="/groceryitems/topFruitsSalesData")
-//	public List<com.exercise.webapp.base.GroceryItem> getTopFruitsSalesData() {
-//		itemService.addGroceryItem(null);
-//		return (convert(itemService.getTopFruitsSalesData()));
-//	}
+	@RequestMapping(method=RequestMethod.GET, value="/groceryitems/topFruitsSalesData")
+	public List<com.exercise.webapp.base.GroceryItem> getTopFruitsSalesData() {
+		itemService.addGroceryItem(null);
+		return (serializeGroceryItem(itemService.getTopFruitsSalesData()));
+	}
 	
 	@RequestMapping(method=RequestMethod.GET, value="/hello")
 	public String sayHi() {
