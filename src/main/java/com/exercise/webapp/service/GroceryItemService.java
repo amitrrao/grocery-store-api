@@ -41,7 +41,7 @@ public class GroceryItemService {
 	public List<GroceryItem> getTopFruitsSalesData() {
 		System.out.println("*********getting fruits sales data********");
 		
-		List<GroceryItem> groceryItems = groceryItemRepository.findTest();
+		List<GroceryItem> groceryItems = groceryItemRepository.findSalesDataForFruits();
 		
 //		Predicate predicate = 
 		return groceryItems;
