@@ -5,8 +5,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.NamedNativeQuery;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -80,6 +78,4 @@ public class GroceryItem {
 		this.saleItem = saleItem;
 		this.internalDetails = internalDetails;
 	}
-	
-	
 }

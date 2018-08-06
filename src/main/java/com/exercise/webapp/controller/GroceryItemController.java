@@ -1,6 +1,5 @@
 package com.exercise.webapp.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -17,10 +16,15 @@ import org.springframework.web.bind.annotation.RestController;
 import com.exercise.webapp.exceptions.ItemNotFoundException;
 import com.exercise.webapp.GroceryStoreApplication;
 import com.exercise.webapp.base.CheckoutItem;
-import com.exercise.webapp.builder.GroceryItemBuilder;
-import com.exercise.webapp.persistence.models.GroceryItem;
 import com.exercise.webapp.service.GroceryItemService;
 
+/**
+ * 
+ * This is a GroceryItem Controller class that maps incoming REST calls to appropriate service methods.
+ * It injects singletons for the service instance and calls methods on them based on the request mapping.
+ * 
+ * @author arao
+ */
 @RestController
 public class GroceryItemController implements ErrorController {
 	private static final Logger logger = LoggerFactory.getLogger(GroceryItemController.class);
@@ -32,13 +36,6 @@ public class GroceryItemController implements ErrorController {
 	@RequestMapping(method=RequestMethod.GET, value="/groceryitems")
 	public List<com.exercise.webapp.base.GroceryItem> getAllItems() {
 		return GroceryStoreApplication.deserializeGroceryItem(groceryItemService.getAllGroceryItems());
-	}
-	
-	@RequestMapping(method=RequestMethod.POST, value="/groceryitems/add")
-	public void addItem(@RequestBody com.exercise.webapp.base.GroceryItem item) {
-		System.out.println("*********amit********");
-		GroceryItem groceryItem = GroceryStoreApplication.serializeGroceryItem(item);
-		groceryItemService.addGroceryItem(groceryItem);
 	}
 	
 	@RequestMapping(method=RequestMethod.POST, value="/groceryitems/checkout")

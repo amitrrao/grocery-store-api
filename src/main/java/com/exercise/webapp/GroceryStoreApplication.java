@@ -33,13 +33,16 @@ public class GroceryStoreApplication extends SpringBootServletInitializer implem
         return application.sources(GroceryStoreApplication.class);
     }
 	
+	/**
+	 * This is the main entry point into the GroceryStoreApplication class.
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		SpringApplication.run(GroceryStoreApplication.class, args);
 	}
 	
 	@Override
 	public void run(String... args) throws Exception {
-		// TODO: remove this if condition? or find a way to not use args[0] as default because unit tests fail
 		if (args.length > 0) {
 			JSONParser parser = new JSONParser();
 			JSONArray jsonArray = (JSONArray) parser.parse(new FileReader(args[0]));
@@ -49,6 +52,13 @@ public class GroceryStoreApplication extends SpringBootServletInitializer implem
 		}
     }
 
+	/***
+	 * A method to serialize a GroceryItem instance so that it can be persisted in the database.
+	 * It converts the given GroceryItem instance from a Json format to a db normalized version of that GroceryItem.
+	 * 
+	 * @param A base GroceryItem instance, which is in a Json format.
+	 * @return A serialized version of GroceryItem instance.
+	 */
 	public static GroceryItem serializeGroceryItem(Object obj) {
 		GroceryItem returnItem = new GroceryItem();
 		JSONObject item = (JSONObject) obj;
@@ -76,6 +86,13 @@ public class GroceryStoreApplication extends SpringBootServletInitializer implem
 		return returnItem;
 	}
 	
+	/***
+	 * A method to deserialize a db normalized GroceryItem instance so that it can be sent back as a Json response for an HTTP request.
+	 * It converts the given GroceryItem instance from a db normalized format to a Json format.
+	 * 
+	 * @param A db normalized GroceryItem instance
+	 * @return A deserialized version of that GroceryItem in a Json format
+	 */
 	public static List<com.exercise.webapp.base.GroceryItem> deserializeGroceryItem(List<GroceryItem> items) {
 		List<com.exercise.webapp.base.GroceryItem> returnItems = new ArrayList<>();
 		for(GroceryItem item: items) {

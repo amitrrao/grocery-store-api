@@ -51,8 +51,8 @@
         "internal": {
             "aisle": 11,
             "timesSold": {
-                "today": 150,
-                "yesterday": 100
+                "today": 1500,
+                "yesterday": 1000
             }
         }
     },
@@ -70,8 +70,8 @@
         "internal": {
             "aisle": 12,
             "timesSold": {
-                "today": 50,
-                "yesterday": 60
+                "today": 5000,
+                "yesterday": 6110
             }
         }
     },
@@ -127,8 +127,8 @@
         "internal": {
             "aisle": 10,
             "timesSold": {
-                "today": 20,
-                "yesterday": 30
+                "today": 2000,
+                "yesterday": 3120
             }
         }
     },
