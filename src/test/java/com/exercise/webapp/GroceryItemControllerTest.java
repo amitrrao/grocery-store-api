@@ -48,7 +48,6 @@ public class GroceryItemControllerTest {
 	@Autowired
 	ApplicationContext ctx;
 
-	@Ignore
 	@Before
 	public void setUp() throws Exception {
 		mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
@@ -56,7 +55,6 @@ public class GroceryItemControllerTest {
 		runner.run ("-k", "./src/main/java/com/exercise/webapp/data/input.json");
 	}
 
-	@Ignore
 	@Test
 	public void getAllGroceryItems_Success() throws Exception {
 		//			given(mockGroceryItemService.getAllGroceryItems())

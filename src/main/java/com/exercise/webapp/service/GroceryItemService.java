@@ -10,6 +10,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.exercise.webapp.exceptions.ItemNotFoundException;
+import com.exercise.webapp.base.Aisle;
 import com.exercise.webapp.base.CheckoutItem;
 import com.exercise.webapp.persistence.models.GroceryItem;
 import com.exercise.webapp.persistence.models.SaleItem;
@@ -54,7 +55,13 @@ public class GroceryItemService {
 	 * @return Top two fruits sold from last two days.
 	 */
 	public List<GroceryItem> getTopFruitsSalesData() {
-		List<GroceryItem> groceryItems = groceryItemRepository.findSalesDataForFruits(new PageRequest(0, 2)); // TODO: '2' can be a parameter
+		List<GroceryItem> groceryItems = groceryItemRepository.findSalesDataForFruits(new PageRequest(0, 2));
+		
+		return groceryItems;
+	}
+	
+	public List<GroceryItem> getTopFruitsSalesData(int count) {
+		List<GroceryItem> groceryItems = groceryItemRepository.findSalesDataForFruits(new PageRequest(0, count));
 		
 		return groceryItems;
 	}
@@ -88,7 +95,7 @@ public class GroceryItemService {
 	 * @return A list of SaleItem instances which are under $1.00.
 	 */
 	private List<SaleItem> findSuperSaverItems() {
-		List<SaleItem> superSaverSaleItems = saleItemRepository.findByPrice();
+		List<SaleItem> superSaverSaleItems = saleItemRepository.findItemByPrice();
 		return superSaverSaleItems;
 	}
 	
@@ -129,14 +136,14 @@ public class GroceryItemService {
 			for (SaleItem superSaverItem : superSaverItems) {
 				GroceryItem gi = superSaverItem.getGroceryItem();
 				logger.info(String.format("Found %s on Aisle %d.", gi.getName(), gi.getInternalDetails().getAisle()));
-				if (gi.getInternalDetails().getAisle() != 15) {
-				gi.getInternalDetails().setAisle(15); // TODO: move 15 to static value
+				if (gi.getInternalDetails().getAisle() != Aisle.SUPER_SAVER.getValue()) {
+				gi.getInternalDetails().setAisle(Aisle.SUPER_SAVER.getValue());
 				groceryItems.add(gi);
 				++totalItemsMoved;
-				logger.info(String.format("Moved %s to Aisle 15.", gi.getName()));
+				logger.info(String.format("Moved %s to Aisle %d.", gi.getName(), Aisle.SUPER_SAVER.getValue()));
 				} else {
 					++totalItemsNotMoved;
-					logger.info(String.format("Found %s, which is already on Aisle 15. Nothing to move.", gi.getName()));
+					logger.info(String.format("Found %s, which is already on Aisle %d. Nothing to move.", gi.getName(), Aisle.SUPER_SAVER.getValue()));
 				}
 			}
 			if(totalItemsNotMoved == superSaverItems.size()) {

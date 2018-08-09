@@ -12,8 +12,8 @@ public interface GroceryItemRepository extends JpaRepository<GroceryItem, Long>{
 	
 	@Query(value = "SELECT gi FROM GroceryItem gi "
 			+ "WHERE gi.saleItem.discount > 0 "
-			+ "AND gi.internalDetails.timesSoldToday + gi.internalDetails.timesSoldYesterday > 0 "
+			+ "AND (gi.internalDetails.timesSoldToday + gi.internalDetails.timesSoldYesterday) > 0 "
 			+ "AND gi.category = 'fruit' "
 			+ "ORDER BY (gi.internalDetails.timesSoldToday + gi.internalDetails.timesSoldYesterday) DESC")
-    public List<GroceryItem> findSalesDataForFruits(Pageable pageable); // TODO: fruit can be a param
+    public List<GroceryItem> findSalesDataForFruits(Pageable pageable);
 }

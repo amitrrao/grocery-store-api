@@ -18,7 +18,6 @@ public class TestData {
 	public static List<GroceryItem> getGroceryItemTestData() {
 		List<GroceryItem> items = new ArrayList<>();
 		
-		//TODO: create enum for category
 		GroceryItem item1 = new GroceryItem();
 		item1.setId(101);
 		item1.setName("Idaho Potatoes");

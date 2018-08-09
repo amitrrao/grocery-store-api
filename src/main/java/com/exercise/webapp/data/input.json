@@ -312,7 +312,7 @@
         },
         "sales": {
             "price": 10.0,
-            "discount": 0.0
+            "discount": 3.0
         },
         "internal": {
             "aisle": 10,
@@ -331,7 +331,7 @@
         },
         "sales": {
             "price": 15.0,
-            "discount": 0.0
+            "discount": 1.0
         },
         "internal": {
             "aisle": 10,
@@ -350,7 +350,7 @@
         },
         "sales": {
             "price": 1.25,
-            "discount": 0.0
+            "discount": 3.0
         },
         "internal": {
             "aisle": 10,

@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.ErrorController;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -51,6 +52,11 @@ public class GroceryItemController implements ErrorController {
 	@RequestMapping(method=RequestMethod.GET, value="/groceryitems/topFruitsSalesData")
 	public List<com.exercise.webapp.base.GroceryItem> getTopFruitsSalesData() {
 		return (GroceryStoreApplication.deserializeGroceryItem(groceryItemService.getTopFruitsSalesData()));
+	}
+	
+	@RequestMapping(method=RequestMethod.GET, value="/groceryitems/topFruitsSalesData/{count}")
+	public List<com.exercise.webapp.base.GroceryItem> getTopFruitsSalesData(@PathVariable int count) {
+		return (GroceryStoreApplication.deserializeGroceryItem(groceryItemService.getTopFruitsSalesData(count)));
 	}
 	
 	@RequestMapping(method=RequestMethod.GET, value="/hello")

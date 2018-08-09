@@ -19,7 +19,7 @@ public class Sales {
 	
 	public static class SalesBuilder {
 		private float nestedPrice = 0;
-		private float nestedDiscount = 0; // TODO: default value. Is this the right way to set it?
+		private float nestedDiscount = 0;
 		
 		public SalesBuilder withPrice(float price) {
 			this.nestedPrice = price;
