@@ -49,18 +49,24 @@ public class GroceryItemService {
 		return groceryItems;
 	}
 	
+	@Deprecated
 	/***
 	 * A method to get the top two fruits based on sale data.
 	 * 
 	 * @return Top two fruits sold from last two days.
 	 */
-	public List<GroceryItem> getTopFruitsSalesData() {
+	public List<GroceryItem> topTwoFruitsSold() {
 		List<GroceryItem> groceryItems = groceryItemRepository.findSalesDataForFruits(new PageRequest(0, 2));
 		
 		return groceryItems;
 	}
 	
-	public List<GroceryItem> getTopFruitsSalesData(int count) {
+	/***
+	 * A method to get the top N fruits based on sale data.
+	 * 
+	 * @return Top N fruits sold from last two days.
+	 */
+	public List<GroceryItem> getTopFruitsSold(int count) {
 		List<GroceryItem> groceryItems = groceryItemRepository.findSalesDataForFruits(new PageRequest(0, count));
 		
 		return groceryItems;

@@ -49,14 +49,14 @@ public class GroceryItemController implements ErrorController {
 		return groceryItemService.moveItemsToSuperSavingsAisle();
 	}
 	
-	@RequestMapping(method=RequestMethod.GET, value="/groceryitems/topFruitsSalesData")
-	public List<com.exercise.webapp.base.GroceryItem> getTopFruitsSalesData() {
-		return (GroceryStoreApplication.deserializeGroceryItem(groceryItemService.getTopFruitsSalesData()));
+	@RequestMapping(method=RequestMethod.GET, value="/groceryitems/topTwoFruitsSold")
+	public List<com.exercise.webapp.base.GroceryItem> getTopTwoFruitsSold() {
+		return (GroceryStoreApplication.deserializeGroceryItem(groceryItemService.getTopFruitsSold(2)));
 	}
 	
-	@RequestMapping(method=RequestMethod.GET, value="/groceryitems/topFruitsSalesData/{count}")
-	public List<com.exercise.webapp.base.GroceryItem> getTopFruitsSalesData(@PathVariable int count) {
-		return (GroceryStoreApplication.deserializeGroceryItem(groceryItemService.getTopFruitsSalesData(count)));
+	@RequestMapping(method=RequestMethod.GET, value="/groceryitems/topFruitsSold/{count}")
+	public List<com.exercise.webapp.base.GroceryItem> getTopFruitsSold(@PathVariable int count) {
+		return (GroceryStoreApplication.deserializeGroceryItem(groceryItemService.getTopFruitsSold(count)));
 	}
 	
 	@RequestMapping(method=RequestMethod.GET, value="/hello")

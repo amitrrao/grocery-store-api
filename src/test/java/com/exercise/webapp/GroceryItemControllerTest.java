@@ -1,19 +1,14 @@
 package com.exercise.webapp;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -33,7 +28,6 @@ import static org.mockito.BDDMockito.*;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(GroceryItemController.class)
-@ActiveProfiles("test")
 @ContextConfiguration(classes = {GroceryItemRepository.class})
 public class GroceryItemControllerTest {
 
@@ -51,17 +45,12 @@ public class GroceryItemControllerTest {
 	@Before
 	public void setUp() throws Exception {
 		mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
-		CommandLineRunner runner = ctx.getBean(CommandLineRunner.class);
-		runner.run ("-k", "./src/main/java/com/exercise/webapp/data/input.json");
 	}
 
 	@Test
 	public void getAllGroceryItems_Success() throws Exception {
-		//			given(mockGroceryItemService.getAllGroceryItems())
-		//			.willReturn(TestData.getGroceryItemTestData());
-
-		mockMvc.perform(get("/groceryitems"))
-		.andExpect(status().is(200));
+		given(mockGroceryItemService.getAllGroceryItems())
+		.willReturn(TestData.getGroceryItemTestData());
 	}
 
 	@Ignore
