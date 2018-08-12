@@ -1,11 +1,11 @@
 # grocery-store-app
 
 ### Description
-This is an exercise to implement a simple Grocery Store application. This is implemented as a simple REST based Java web service that requires the location of an input file (.json format) as a commandline parameter. This application populates an embedded Apache Derby database with test data coming from the input.json file in the com.exercise.webapp.data package. It uses [Spring boot](https://projects.spring.io/spring-boot/) under the covers with Apache Tomcat as its webserver. The default Tomcat port for this application is 4020. If this needs to be changed, you can modify application.properties file under the src/main/resources/ folder.
+This is an exercise to implement a simple Grocery Store application. This is implemented as a REST based Java web service that takes as input, the location of an input file (.json format) as a commandline parameter. This application populates an embedded Apache Derby database with test data coming from the input.json file in the com.exercise.webapp.data package. It uses [Spring boot](https://projects.spring.io/spring-boot/) under the covers with Apache Tomcat as its webserver. The default Tomcat port for this application is 4020. If this needs to be changed, you can modify application.properties file under the src/main/resources/ folder.
 
 The API design follows a Builder pattern to build a Json specific GroceryItem object that can be sent back as an HTTP response object.
 
-The application logs can be found at logs/exercise.log.
+The application logs can be found here: logs/exercise.log.
 
 ### System Requirements:
  * [Java 1.8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
@@ -35,8 +35,8 @@ This application comes with a Swagger UI for testing all the implemented REST me
 
 * Step 3. Click on the 'grocery-item-controller' to see the list of all supported REST calls.
 
-* Step 4. Click on individual calls for more details about it.
+* Step 4. Click on individual REST methods for more details about it.
 
 * Step 5. For each REST call, there is a 'Try it out!' option to test that particular method.
 
-* Step 6. Verify that the ~/logs/exercise.log file has relevant messages.
+* Step 6. Verify that the ~/logs/exercise.log file has relevant log messages.
