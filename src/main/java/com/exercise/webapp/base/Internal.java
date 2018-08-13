@@ -1,5 +1,11 @@
 package com.exercise.webapp.base;
 
+/**
+ * 
+ * This is a DTO representing the internal details of a Grocery Item.
+ *
+ * @author arao
+ */
 public class Internal {
 	
 	private int aisle;

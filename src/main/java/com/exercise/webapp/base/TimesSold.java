@@ -1,5 +1,11 @@
 package com.exercise.webapp.base;
 
+/**
+ * This is a DTO representing the number of times a grocery item was sold in the last two days.
+ * 
+ * @author arao
+ *
+ */
 public class TimesSold {
 	
 	private int today;

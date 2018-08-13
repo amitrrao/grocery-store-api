@@ -9,6 +9,12 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import static springfox.documentation.builders.PathSelectors.regex;
 
+/**
+ * This is a simple configuration class for Swagger.
+ * 
+ * @author arao
+ *
+ */
 @EnableSwagger2
 @Configuration
 public class SwaggerConfig {

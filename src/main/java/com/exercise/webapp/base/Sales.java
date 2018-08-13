@@ -1,5 +1,11 @@
 package com.exercise.webapp.base;
 
+/**
+ * This is a DTO representing the sale information  of a groceryItem.
+ * 
+ * @author arao
+ *
+ */
 public class Sales {
 	private float price;
 	private float discount;

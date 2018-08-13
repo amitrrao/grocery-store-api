@@ -2,8 +2,7 @@ package com.exercise.webapp.base;
 
 /**
  * 
- * This is a GroceryItem class that represents a generic item in a Grocery store.
- * This makes it easy to add a new type by writing a new builder.
+ * This is a GroceryItem DTO.
  *
  * @author arao
  */

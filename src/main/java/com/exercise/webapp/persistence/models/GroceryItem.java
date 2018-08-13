@@ -8,6 +8,12 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+/**
+ * This is the domain object that represents a GroceryItem. It is used by JPA to persist data in the database.
+ * 
+ * @author arao
+ *
+ */
 @Entity
 @Table(name="GROCERY_ITEM")
 public class GroceryItem {

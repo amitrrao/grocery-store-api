@@ -59,11 +59,6 @@ public class GroceryItemController implements ErrorController {
 		return (GroceryStoreApplication.deserializeGroceryItem(groceryItemService.getTopFruitsSold(count)));
 	}
 	
-	@RequestMapping(method=RequestMethod.GET, value="/hello")
-	public String sayHi() {
-		return "Hi There, Welcome to our Grocery Store!!";
-	}
-	
 	@RequestMapping(value = INVALID_PATH)
 	@ResponseStatus(value = HttpStatus.BAD_REQUEST)
     public String error() {

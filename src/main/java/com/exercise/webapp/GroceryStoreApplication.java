@@ -22,6 +22,13 @@ import com.exercise.webapp.persistence.models.InternalDetails;
 import com.exercise.webapp.persistence.models.SaleItem;
 import com.exercise.webapp.repository.GroceryItemRepository;
 
+/**
+ * 
+ * This is the entry point into this Spring boot API.
+ *
+ * @author arao
+ * 
+ */
 @SpringBootApplication
 public class GroceryStoreApplication extends SpringBootServletInitializer implements CommandLineRunner {
 	private static final Logger logger = LoggerFactory.getLogger(GroceryStoreApplication.class);
@@ -34,8 +41,9 @@ public class GroceryStoreApplication extends SpringBootServletInitializer implem
     }
 	
 	/**
-	 * This is the main entry point into the GroceryStoreApplication class.
-	 * @param args
+	 * The main() method. It takes in a command-line argument (path to an input file) and calls the run() method to start the Spring Boot application.
+	 * 
+	 * @param args - Path to an input file.
 	 */
 	public static void main(String[] args) {
 		SpringApplication.run(GroceryStoreApplication.class, args);

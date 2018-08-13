@@ -1,5 +1,11 @@
 package com.exercise.webapp.base;
 
+/**
+ * 
+ * This is a DTO representing information about a Grocery Item, specifically, its `description` and `category`.
+ *
+ * @author arao
+ */
 public class ItemInfo {
 	private String description;
 	private String category;
