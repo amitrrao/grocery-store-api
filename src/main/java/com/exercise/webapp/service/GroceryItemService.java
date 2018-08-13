@@ -109,11 +109,13 @@ public class GroceryItemService {
 	 * A helper method to calculate the final cost including the discount for a given item.
 	 * 
 	 * @param price - The sale price for an item
-	 * @param discount - The discount price for that item
+	 * @param discount - The discount price for that item. If discount < 0 or discount > price, then we assume that the discount = 0.
 	 * 
 	 * @return The final cost for a given grocery item.
 	 */
 	private float calculateItemPrice(float price, float discount) {
+		if (discount < 0)
+			return price;
 		return (discount > price) ? 0 : price - discount;
 	}
 	
