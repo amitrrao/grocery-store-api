@@ -57,7 +57,10 @@ public class GroceryStoreApplication extends SpringBootServletInitializer implem
 			for (Object o : jsonArray) {
 				itemRepository.save(serializeGroceryItem(o));
 			}
-		} //TODO: else throw exception
+		} else {
+			throw new Exception(
+					"This application expects an argument - the path to the json file that will be used to initialize the database");
+		}
     }
 
 	/***
