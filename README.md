@@ -1,11 +1,14 @@
 # grocery-store-app
 
 ### Description
-This is an exercise to implement a simple Grocery Store application. This is implemented as a REST based Java web service that takes as input, the location of an input file (.json format) as a commandline parameter. This application populates an embedded Apache Derby database with test data coming from the input.json file in the com.exercise.webapp.data package. It uses [Spring boot](https://projects.spring.io/spring-boot/) under the covers with Apache Tomcat as its webserver. The default Tomcat port for this application is 4020. If this needs to be changed, you can modify application.properties file under the src/main/resources/ folder.
+This is a simple Grocery Store application. It is implemented as a REST based Java web service that takes the location of a JSON file as a command-line parameter to initialize the database. The application populates an embedded Apache Derby database with data from the input file. It uses Spring boot under the covers with Apache Tomcat as its web server. The API design follows a Builder pattern to build an object of the DTO (GroceryItem).
 
-The API design follows a Builder pattern to build a Json specific GroceryItem object that can be sent back as an HTTP response object.
+ * A sample input file has been included and can be found here: com/exercise/webapp/data/input.json
+ 
+ * The default Tomcat port for this application is 4020. If this needs to be changed, the configuration can be updated in src/main/resources/
+application.properties.
 
-The application logs can be found here: logs/exercise.log.
+ * The application logs can be found here: logs/exercise.log.
 
 ### System Requirements:
  * [Java 1.8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
@@ -40,3 +43,7 @@ This application comes with a Swagger UI for testing all the implemented REST me
 * Step 5. For each REST call, there is a 'Try it out!' option to test that particular method.
 
 * Step 6. Verify that the ~/logs/exercise.log file has relevant log messages.
+
+### Future work:
+ * Service layer unit tests
+ * Integration tests - this is for testing queries that work on the database to fetch data
