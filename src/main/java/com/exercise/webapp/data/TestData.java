@@ -103,8 +103,6 @@ public class TestData {
 		item9.setInternalDetails(new InternalDetails(100, 200, 30, item9));
 		items.add(item9);
 		
-		//TODO: what if there is a tie for second spot?
-		
 		// Did not sell yday, category fruits, discount > 0
 		GroceryItem item10 = new GroceryItem();
 		item10.setId(110);

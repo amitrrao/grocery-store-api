@@ -45,5 +45,4 @@ This application comes with a Swagger UI for testing all the implemented REST me
 * Step 6. Verify that the ~/logs/exercise.log file has relevant log messages.
 
 ### Future work:
- * Service layer unit tests
  * Integration tests - this is for testing queries that work on the database to fetch data
